@@ -1,11 +1,18 @@
-import { random } from 'lodash';
-import { IParser, IFixture } from '../interface';
+import * as seedrandom from 'seedrandom';
+
+import { IFixture, IParser } from '../interface';
 
 export class ReferenceParser implements IParser {
     /**
      * @type {number}
      */
     public priority = 50;
+
+    private readonly random: seedrandom.prng;
+
+    constructor() {
+        this.random = seedrandom('typeorm-fixtures-cli');
+    }
 
     /**
      * @param {string} value
@@ -28,8 +35,8 @@ export class ReferenceParser implements IParser {
             const prefix = value.substr(1, value.length - 1);
             const regex = new RegExp(`^${prefix}([0-9]+)$`);
             const maskEntities = Object.keys(entities).filter((s: string) => regex.test(s));
-
-            result = entities[maskEntities[random(maskEntities.length - 1)]];
+            const randomIndex = Math.floor(this.random() * maskEntities.length);
+            result = entities[maskEntities[randomIndex]];
         } else {
             result = entities[value.substr(1)];
         }

@@ -52,6 +52,7 @@
     "@types/lodash": "^4.14.136",
     "@types/mocha": "^5.2.7",
     "@types/resolve-from": "^5.0.0",
+    "@types/seedrandom": "^2.4.28",
     "@types/yargs-parser": "^13.0.0",
     "chai-as-promised": "^7.1.1",
     "commitizen": "^3.1.1",
@@ -89,6 +90,7 @@
     "opencollective-postinstall": "^2.0.2",
     "reflect-metadata": "^0.1.13",
     "resolve-from": "^5.0.0",
+    "seedrandom": "^3.0.5",
     "yargs-parser": "^15.0.0"
   },
   "peerDependencies": {
